@@ -1,0 +1,34 @@
+@import "./var.scss";
+
+html #darkMode {
+    height: 100vh;
+    background: $darkMd-bg-color;
+}
+
+#darkMode {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    label {
+        color: $darkMd-white;
+    }
+    .content {
+        color: $darkMd-darkGray;
+    }
+}
+
+.material-icons {
+    border: 1px black solid;
+    border-radius: 50%;
+    padding: 0.5vw;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#themeController {
+}
