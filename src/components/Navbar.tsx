@@ -10,102 +10,94 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to={{ pathname: "/" }}>
-                        Home
-                    </Link>
+            <nav>
+                <div className="d-flex justify-content-between align-items-center">
+                    <div className="w-50 ">
+                        <Link to={{ pathname: "/" }}>Home</Link>
+                    </div>
 
-                    <div
-                        className="collapse navbar-collapse"
-                        id="navbarSupportedContent"
-                    >
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link
-                                    className="nav-link"
-                                    to={{ pathname: "/" }}
-                                >
-                                    Link
-                                </Link>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <div
-                                    className="nav-link dropdown-toggle"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    小功能
-                                </div>
-                                <ul className="dropdown-menu">
-                                    <li>
-                                        <Link
-                                            className="dropdown-item"
-                                            to={{
-                                                pathname: "/smallFx/Calendar",
-                                            }}
-                                        >
-                                            Calendar
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            className="dropdown-item"
-                                            to={{
-                                                pathname:
-                                                    "/smallFx/SlotMachine",
-                                            }}
-                                        >
-                                            SlotMachine
-                                        </Link>
-                                    </li>
+                    <div className="d-flex  flex-grow-1 justify-content-around align-items-center  ">
+                        <Link to={{ pathname: "/" }}>Link</Link>
 
-                                    <li>
-                                        <hr className="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <Link
-                                            className="dropdown-item"
-                                            to={{ pathname: "/" }}
-                                        >
-                                            maybe something else
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <div className="dropdown">
+                            <div
+                                className="dropdown-toggle"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                小功能
+                            </div>
+                            <ul className="dropdown-menu">
+                                <li>
+                                    <Link
+                                        className="dropdown-item"
+                                        to={{
+                                            pathname: "/smallFx/Calendar",
+                                        }}
+                                    >
+                                        Calendar
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        className="dropdown-item"
+                                        to={{
+                                            pathname: "/smallFx/SlotMachine",
+                                        }}
+                                    >
+                                        SlotMachine
+                                    </Link>
+                                </li>
+                                <hr />
+
+                                <li>
+                                    <Link
+                                        className="dropdown-item"
+                                        to={{ pathname: "/" }}
+                                    >
+                                        maybe something else
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+
                         <div className="d-flex flex-column align-items-center">
-                            <div>
+                            <div id="themeController">
                                 <span
-                                    id="themeController"
+                                    id={IsLightMode ? "sun" : "moon"}
                                     className="material-icons"
                                     onClick={(e) => {
-                                        store.dispatch(setColor(!IsLightMode));
-                                    }}
-                                    onMouseEnter={(e) => {
                                         const target =
                                             e.target as HTMLSpanElement;
-                                        target.classList.add("rotate");
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        const target =
-                                            e.target as HTMLSpanElement;
-                                        target.classList.remove("rotate");
+                                        target.classList.add(
+                                            IsLightMode
+                                                ? "rotateSun"
+                                                : "rotateMoon"
+                                        );
+
+                                        setTimeout(() => {
+                                            store.dispatch(
+                                                setColor(!IsLightMode)
+                                            );
+                                        }, 500);
+
+                                        setTimeout(() => {
+                                            target.classList.remove(
+                                                "rotateSun",
+                                                "rotateMoon"
+                                            );
+                                        }, 1000);
                                     }}
                                 >
                                     {IsLightMode ? "wb_sunny" : "dark_mode"}
                                 </span>
                             </div>
-                            <div>
-                                switch to {IsLightMode ? "dark" : "light"} theme
-                            </div>
                         </div>
 
-                        {/*<form className="d-flex" role="search">*/}
-                        {/*    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>*/}
-                        {/*        <button className="btn btn-outline-success" type="submit">Search</button>*/}
-                        {/*</form>*/}
+                        <div>
+                            <span></span>
+                        </div>
                     </div>
                 </div>
             </nav>

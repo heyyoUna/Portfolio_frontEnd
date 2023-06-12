@@ -5,6 +5,11 @@ html #darkMode {
     background: $darkMd-bg-color;
 }
 
+a {
+    text-decoration: none;
+}
+
+//深色模式 文字顏色
 #darkMode {
     h1,
     h2,
@@ -13,7 +18,10 @@ html #darkMode {
     h5,
     h6,
     p,
-    label {
+    label,
+    a,
+    span,
+    .dropdown-toggle {
         color: $darkMd-white;
     }
     .content {
@@ -21,14 +29,65 @@ html #darkMode {
     }
 }
 
+//icon基本設定
 .material-icons {
-    border: 1px black solid;
     border-radius: 50%;
     padding: 0.5vw;
+
     &:hover {
         cursor: pointer;
     }
 }
 
-#themeController {
+//#region 深淺色模式 轉換按鈕
+@keyframes rotateSun {
+    0% {
+        transform: rotate(90deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
+@keyframes rotateMoon {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+#themeController .rotateSun {
+    animation: rotateSun 1s linear;
+}
+
+#themeController .rotateMoon {
+    animation: rotateMoon 1s linear;
+}
+
+//#endregion 深淺色模式 轉換按鈕
+
+//#region Navbar
+nav {
+    padding: 2vh 2vw;
+    background-color: $darkMd-darkGray;
+}
+
+#darkMode nav hr {
+    color: $darkMd-white;
+    margin: 0.5vh 0;
+}
+
+#darkMode nav {
+    background: $darkMd-nav-bg;
+}
+#darkMode nav .dropdown-menu {
+    background: $darkMd-nav-bg;
+    border: 1px solid $darkMd-darkGray;
+    .dropdown-item {
+        &:hover {
+            background: $blue;
+        }
+    }
+}
+//#endregion Navbar
