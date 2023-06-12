@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import store, { redux_globalMode, redux_store } from "../redux/store";
-import { setColor } from "../redux/slices/GobalMode";
+import { setColor, setLanguage } from "../redux/slices/GobalMode";
 
 export default function Navbar() {
     const IsLightMode = useSelector(
         (state: redux_store) => state.GlobalMode.IsLight
+    );
+    const languageMode = useSelector(
+        (state: redux_store) => state.GlobalMode.language
     );
 
     return (
@@ -95,8 +98,17 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        <div>
-                            <span></span>
+                        <div
+                            className="border p-1"
+                            onClick={() => {
+                                store.dispatch(
+                                    setLanguage(
+                                        languageMode === "EN" ? "TC" : "EN"
+                                    )
+                                );
+                            }}
+                        >
+                            <span>{languageMode}</span>
                         </div>
                     </div>
                 </div>
