@@ -13,5 +13,7 @@ export interface redux_store {
 
 export interface redux_globalMode {
     IsLight: boolean;
-    language: "TC" | "EN";
+    language: languageType;
 }
+
+export type languageType = "TC" | "SC" | "EN";
