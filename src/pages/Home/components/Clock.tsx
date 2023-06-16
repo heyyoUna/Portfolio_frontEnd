@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Clock: React.FC = () => {
+export default function Clock() {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const Clock: React.FC = () => {
 
     const getRotationStyle = (value: number, total: number) => {
         const rotation = (value / total) * 360;
-        const transition = value === 0 ? "none" : "transform 1s linear";
+        const transition = "transform 1s alternate infinite"; //value === 0 ? "none" : "transform 1s linear";
         return {
             transform: `rotate(${rotation}deg)`,
             transition,
@@ -59,6 +59,4 @@ const Clock: React.FC = () => {
             </div>
         </div>
     );
-};
-
-export default Clock;
+}
