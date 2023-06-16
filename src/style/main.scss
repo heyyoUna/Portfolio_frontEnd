@@ -42,18 +42,18 @@ a {
 //#region 深淺色模式 轉換按鈕
 @keyframes rotateSun {
     0% {
-        transform: rotate(90deg);
+        transform: rotate(0deg);
     }
     100% {
-        transform: rotate(0deg);
+        transform: rotate(90deg);
     }
 }
 @keyframes rotateMoon {
     0% {
-        transform: rotate(0deg);
+        transform: rotate(90deg);
     }
     100% {
-        transform: rotate(90deg);
+        transform: rotate(0deg);
     }
 }
 
@@ -68,20 +68,20 @@ a {
 //#endregion 深淺色模式 轉換按鈕
 
 //#region Navbar
-nav {
+#mainNav {
     padding: 2vh 2vw;
     background-color: $darkMd-darkGray;
 }
 
-#darkMode nav hr {
+#darkMode #mainNav hr {
     color: $darkMd-white;
     margin: 0.5vh 0;
 }
 
-#darkMode nav {
+#darkMode #mainNav {
     background: $darkMd-nav-bg;
 }
-#darkMode nav .dropdown-menu {
+#darkMode #mainNav .dropdown-menu {
     background: $darkMd-nav-bg;
     border: 1px solid $darkMd-darkGray;
     .dropdown-item {

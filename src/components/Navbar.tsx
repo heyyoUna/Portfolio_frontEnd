@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import store, { redux_globalMode, redux_store } from "../redux/store";
 import { setColor, setLanguage } from "../redux/slices/GobalMode";
+import { GetTxt } from "../App";
+import { useCallback, useEffect } from "react";
 
 export default function Navbar() {
     const IsLightMode = useSelector(
@@ -13,7 +15,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav>
+            <nav id="mainNav">
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="w-50 ">
                         <Link to={{ pathname: "/" }}>Home</Link>
@@ -29,14 +31,14 @@ export default function Navbar() {
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
-                                小功能
+                                {GetTxt("components")}
                             </div>
                             <ul className="dropdown-menu">
                                 <li>
                                     <Link
                                         className="dropdown-item"
                                         to={{
-                                            pathname: "/smallFx/Calendar",
+                                            pathname: "/component/calendar",
                                         }}
                                     >
                                         Calendar
@@ -46,7 +48,7 @@ export default function Navbar() {
                                     <Link
                                         className="dropdown-item"
                                         to={{
-                                            pathname: "/smallFx/SlotMachine",
+                                            pathname: "/component/slotMachine",
                                         }}
                                     >
                                         SlotMachine
@@ -61,6 +63,34 @@ export default function Navbar() {
                                     >
                                         maybe something else
                                     </Link>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className="dropdown">
+                            <div
+                                className="dropdown-toggle"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                key={"languageMode-layout"}
+                            >
+                                {GetTxt("layout")}
+                            </div>
+                            <ul className="dropdown-menu">
+                                <li>
+                                    <span
+                                        className="dropdown-item"
+                                        onClick={() => {
+                                            window.open(
+                                                "/layout/github",
+                                                "123",
+                                                "height=800,width=1200"
+                                            );
+                                        }}
+                                    >
+                                        GitHub
+                                    </span>
                                 </li>
                             </ul>
                         </div>
@@ -93,7 +123,7 @@ export default function Navbar() {
                                         }, 1000);
                                     }}
                                 >
-                                    {IsLightMode ? "wb_sunny" : "dark_mode"}
+                                    {IsLightMode ? "dark_mode" : "wb_sunny"}
                                 </span>
                             </div>
                         </div>
@@ -108,7 +138,7 @@ export default function Navbar() {
                                 );
                             }}
                         >
-                            <span>{languageMode}</span>
+                            <span>{languageMode === "EN" ? "TC" : "EN"}</span>
                         </div>
                     </div>
                 </div>
