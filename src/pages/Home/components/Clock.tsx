@@ -4,6 +4,7 @@ export default function Clock() {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
+        console.log("re-remder");
         const timer = setInterval(() => {
             setTime(new Date());
         }, 1000);

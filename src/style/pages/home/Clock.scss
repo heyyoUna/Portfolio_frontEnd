@@ -48,4 +48,20 @@
             padding: 0 5px;
         }
     }
+    .hour-marker {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: bottom;
+        transform: translate(-50%, -100%);
+    }
+
+    .hour-marker-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+        font-weight: bold;
+    }
 }
