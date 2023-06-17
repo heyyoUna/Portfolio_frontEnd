@@ -42,7 +42,12 @@ export default function Calculator() {
             "1",
             "2",
             "3",
+            "0",
+            ".",
         ];
+    }, []);
+    const CalcBtnsRight = useMemo((): string[] => {
+        return ["-", "+", "="];
     }, []);
 
     return (
@@ -54,11 +59,13 @@ export default function Calculator() {
                 <div className="calculator__buttons">
                     {CalcBtnsLeft.map((value, index) => {
                         const isIcon = value === "play_arrow";
+                        const isZero = value === "0";
                         return (
                             <>
                                 <button
                                     key={value + index}
-                                    className="calculator__button d-flex align-items-center justify-content-center"
+                                    className={`calculator__button d-flex align-items-center justify-content-center
+                                    ${isZero ? "calculator__widerBtn" : ""}`}
                                     onClick={() => HandleClick(value)}
                                 >
                                     <span
@@ -72,23 +79,27 @@ export default function Calculator() {
                             </>
                         );
                     })}
-                    <button
-                        className="calculator__button
-                        
-          
-                        
-                        
-                        calculator__widerBtn
-                       
-                        
-                        
-                        d-flex align-items-center justify-content-center widerBtn"
-                        onClick={() => HandleClick("0")}
-                    >
-                        <span>0</span>
-                    </button>
                 </div>
-                <div></div>
+                <div className="d-flex flex-column">
+                    <div className="calculator__buttons">
+                        {CalcBtnsRight.map((value, index) => {
+                            return (
+                                <>
+                                    <button
+                                        key={value + index}
+                                        className={`calculator__button
+                                        calculator_heigherBtn
+                                        d-flex align-items-center justify-content-center
+                                 `}
+                                        onClick={() => HandleClick(value)}
+                                    >
+                                        <span>{value}</span>
+                                    </button>
+                                </>
+                            );
+                        })}
+                    </div>
+                </div>
             </div>
             {/* 
             <div className="calculator__buttons">

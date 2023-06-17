@@ -31,7 +31,7 @@
         padding: 10px;
         font-size: 16px;
         text-align: center;
-        // background-color: #eee;
+        background-color: #eee;
         border: 1px solid #ccc;
         border-radius: 3px;
         cursor: pointer;
@@ -43,6 +43,10 @@
 
     &__widerBtn {
         grid-column: span 2;
+    }
+    &_heigherBtn {
+        grid-column: span 2;
+        grid-row: span 2;
     }
 
     &__button--clear {
