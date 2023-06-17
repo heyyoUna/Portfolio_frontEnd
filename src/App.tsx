@@ -16,10 +16,9 @@ import SlotMachine from "./pages/SlotMachine";
 import GithubLayout from "./pages/Layout/Github";
 
 //樣式
-
+import "./style/main.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./style/main.scss";
 import "material-icons/iconfont/material-icons.css";
 
 //#region 語言版本切換

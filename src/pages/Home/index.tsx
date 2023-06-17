@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { DndProvider } from "react-dnd";
 import Clock from "./components/Clock";
+import Calculator from "./components/Calculator";
 
 export default function Home() {
     return (
@@ -14,9 +15,12 @@ export default function Home() {
                 }}
             >
                 <Navbar />
-                <div style={{ gridRow: "2" }}>
+                <div className="home " style={{ gridRow: "2" }}>
                     <div>
                         <Clock />
+                        <div className="m-2">
+                            <Calculator />
+                        </div>
                     </div>
                 </div>
             </div>
