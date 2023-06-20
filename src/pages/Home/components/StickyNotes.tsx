@@ -4,13 +4,13 @@ interface note_state {
     id: number;
     value: string;
     //背景顏色
-    bgColor: string;
+    bgColor: "_yellow" | "_green" | "_pink" | "_blue" | "_gray";
     //是否開啟，顏色選擇器
     colorSelect: boolean;
 }
 export default function StickyNotes() {
     const emptyNote: note_state = useMemo(() => {
-        return { id: 0, value: "", bgColor: "", colorSelect: false };
+        return { id: 0, value: "", bgColor: "_yellow", colorSelect: false };
     }, []);
     const [note, setNote] = useState<Array<note_state>>([emptyNote]);
 

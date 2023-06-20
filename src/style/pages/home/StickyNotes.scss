@@ -1,4 +1,9 @@
 @import "../../var.scss";
 
 .StickyNotes {
+    .noteBg {
+        &_yellow {
+            color: $stickyNote-yellow;
+        }
+    }
 }
