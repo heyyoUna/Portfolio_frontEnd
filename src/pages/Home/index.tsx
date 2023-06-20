@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import { DndProvider } from "react-dnd";
 import Clock from "./components/Clock";
 import Calculator from "./components/Calculator";
+import StickyNotes from "./components/StickyNotes";
 
 export default function Home() {
     return (
@@ -15,12 +16,17 @@ export default function Home() {
                 }}
             >
                 <Navbar />
-                <div className="home " style={{ gridRow: "2" }}>
-                    <div>
+                <div className="home d-flex" style={{ gridRow: "2" }}>
+                    <div className="m-5">
                         <Clock />
-                        <div className="m-2">
-                            <Calculator />
-                        </div>
+                    </div>
+
+                    <div className="m-5">
+                        <Calculator />
+                    </div>
+
+                    <div className="m-5">
+                        <StickyNotes />
                     </div>
                 </div>
             </div>

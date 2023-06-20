@@ -2,20 +2,26 @@
 
 #darkMode .calculator {
     .calculator {
+        &__button {
+            background-color: $darkMd-nav-bg;
+        }
+        &__enter {
+            background-color: #ff5f5f;
+        }
     }
 }
 
 .calculator {
     min-width: 240px;
     width: 13vw;
-    border: 1px solid #ccc;
+    border: 1px solid $darkMd-darkGray;
     border-radius: 5%;
     padding: 0.5vw;
 
     &__display {
         margin-bottom: 10px;
         padding: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid $darkMd-darkGray;
         border-radius: 3px;
         font-size: 20px;
         text-align: right;
@@ -23,7 +29,7 @@
 
     &__buttons {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-gap: 5px;
     }
 
@@ -31,13 +37,13 @@
         padding: 10px;
         font-size: 16px;
         text-align: center;
-        background-color: #eee;
-        border: 1px solid #ccc;
+        // background-color: #eee;
+        border: 1px solid $darkMd-darkGray;
         border-radius: 3px;
         cursor: pointer;
 
         &:hover {
-            background-color: #ddd;
+            background-color: $darkMd-darkGray;
         }
     }
 
@@ -49,10 +55,10 @@
         grid-row: span 2;
     }
 
-    &__button--clear {
-        grid-column: span 2;
+    &__enter {
+        grid-row: span 2;
         background-color: #ff5f5f;
-        color: #fff;
+        // color: #fff;
 
         &:hover {
             background-color: #ff3f3f;
