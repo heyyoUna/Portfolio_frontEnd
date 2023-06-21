@@ -1,9 +1,26 @@
 @import "../../var.scss";
 
-.StickyNotes {
+.stickyNotes {
     .noteBg {
+        border-radius: 50%;
+        width: 2vw;
+        height: 2vw;
+        cursor: pointer;
+
         &_yellow {
-            color: $stickyNote-yellow;
+            background-color: $stickyNote-yellow;
+        }
+        &_green {
+            background-color: $stickyNote-green;
+        }
+        &_pink {
+            background-color: $stickyNote-pink;
+        }
+        &_blue {
+            background-color: $stickyNote-blue;
+        }
+        &_gray {
+            background-color: $stickyNote-gray;
         }
     }
 }
