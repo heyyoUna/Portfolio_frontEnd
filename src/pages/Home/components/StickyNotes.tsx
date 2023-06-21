@@ -1,10 +1,11 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 
+type bgColor = "_yellow" | "_green" | "_pink" | "_blue" | "_gray";
 interface note_state {
     id: number;
     value: string;
     //背景顏色
-    bgColor: "_yellow" | "_green" | "_pink" | "_blue" | "_gray";
+    bgColor: bgColor;
     //是否開啟，顏色選擇器
     colorSelect: boolean;
 }
@@ -14,6 +15,10 @@ export default function StickyNotes() {
     }, []);
     const [note, setNote] = useState<Array<note_state>>([emptyNote]);
 
+    const stickynoteBg: bgColor[] = useMemo(() => {
+        return ["_yellow", "_green", "_pink", "_blue", "_gray"];
+    }, []);
+
     return (
         <>
             <div
@@ -21,14 +26,15 @@ export default function StickyNotes() {
                 key={JSON.stringify(note)}
             >
                 {note.map((value, index) => {
+                    //各自的背景色
+                    const bg = "noteBg" + value.bgColor;
                     return (
                         <>
                             <div
-                                className="border m-1"
+                                className={` m-1 ${bg}`}
                                 key={value.id + value.value + index}
-                                style={{ backgroundColor: "#0d1117" }}
                             >
-                                <div className="w-100 border d-flex justify-content-between">
+                                <div className="w-100 d-flex justify-content-between">
                                     {!value.colorSelect ? (
                                         <>
                                             <button
@@ -101,21 +107,77 @@ export default function StickyNotes() {
                                             </div>
                                         </>
                                     ) : (
-                                        <></>
+                                        <>
+                                            <div className="d-flex">
+                                                {stickynoteBg.map(
+                                                    (val, idx) => {
+                                                        const colorOption =
+                                                            "noteBg" + val;
+                                                        const isSelect =
+                                                            bg === colorOption;
+
+                                                        return (
+                                                            <>
+                                                                <div
+                                                                    key={
+                                                                        val +
+                                                                        idx
+                                                                    }
+                                                                    className={`m-1 border noteBg d-flex justify-content-center align-items-center ${colorOption}`}
+                                                                    onClick={() => {
+                                                                        setNote(
+                                                                            (
+                                                                                prev
+                                                                            ) => {
+                                                                                const ta =
+                                                                                    prev.find(
+                                                                                        (
+                                                                                            v
+                                                                                        ) =>
+                                                                                            v.id ===
+                                                                                            value.id
+                                                                                    );
+                                                                                if (
+                                                                                    ta
+                                                                                ) {
+                                                                                    ta.bgColor =
+                                                                                        val;
+                                                                                }
+                                                                                return [
+                                                                                    ...prev,
+                                                                                ];
+                                                                            }
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    {isSelect && (
+                                                                        <>
+                                                                            <span className="material-icons">
+                                                                                done
+                                                                            </span>
+                                                                        </>
+                                                                    )}
+                                                                </div>
+                                                            </>
+                                                        );
+                                                    }
+                                                )}
+                                            </div>
+                                        </>
                                     )}
                                 </div>
 
                                 <textarea
                                     name=""
                                     id=""
+                                    className={`${bg}`}
                                     cols={40}
                                     rows={10}
                                     style={{
-                                        background: "#0d1117",
                                         color: "#fff",
                                         resize: "both",
                                     }}
-                                    placeholder="請填入文字"
+                                    placeholder="請填入文字..."
                                     onClick={() => {
                                         if (value.colorSelect) {
                                             setNote((prev) => {
