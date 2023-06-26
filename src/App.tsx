@@ -20,6 +20,7 @@ import "./style/main.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "material-icons/iconfont/material-icons.css";
+import "react-calendar/dist/Calendar.css";
 
 //#region 語言版本切換
 function IntlMessage() {

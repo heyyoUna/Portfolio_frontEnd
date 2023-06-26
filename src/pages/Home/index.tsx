@@ -4,6 +4,7 @@ import { DndProvider } from "react-dnd";
 import Clock from "./components/Clock";
 import Calculator from "./components/Calculator";
 import StickyNotes from "./components/StickyNotes";
+import CalendarHome from "./components/CalendarHome";
 
 export default function Home() {
     return (
@@ -16,7 +17,7 @@ export default function Home() {
                 }}
             >
                 <Navbar />
-                <div className="home d-flex" style={{ gridRow: "2" }}>
+                <div className="home d-flex flex-wrap" style={{ gridRow: "2" }}>
                     <div className="m-5">
                         <Clock />
                     </div>
@@ -27,6 +28,10 @@ export default function Home() {
 
                     <div className="m-5">
                         <StickyNotes />
+                    </div>
+
+                    <div className="m-5">
+                        <CalendarHome />
                     </div>
                 </div>
             </div>
